@@ -23,5 +23,7 @@ proxylist.each{|a|
       end
   rescue Timeout::Error
         puts "timed out, trying next proxy"
+  rescue SOCKSError
+        puts "generic Socks error"
   end
   }

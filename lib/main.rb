@@ -17,7 +17,7 @@ proxylist.each{|a|
   begin
         TCPSocket::socks_server = a.split(":")[0]
         TCPSocket::socks_port = a.split(":")[1]
-        timeout(5) do
+        timeout(20) do
         open('http://timeunderscrutiny.blogspot.com')
         puts "Operation with #{a} completed."
       end
@@ -25,5 +25,7 @@ proxylist.each{|a|
         puts "timed out, trying next proxy"
   rescue SOCKSError
         puts "generic Socks error"
+  rescue Exception
+        puts "Generic Error"
   end
   }
